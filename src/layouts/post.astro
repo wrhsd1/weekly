@@ -13,7 +13,7 @@ export interface Props {
 }
 const pageUrl = new URL(Astro.request.url);
 const currentPage = pageUrl.pathname;
-
+const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
 let title = parseTitle(currentPage);
 
 const { date, pic, desc } = Astro.props.frontmatter;
@@ -159,7 +159,7 @@ const currentUrl = SITE.homePage + currentPage;
         >
           <h1 class="content-title flex align-middle">
             <a class="logo inline-block" href="/"><AstroLogo size={40} /></a>
-            {title}
+            {oldTitle}
           </h1>
           <slot />
           <hr />
