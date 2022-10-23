@@ -1,5 +1,5 @@
 export const SITE = {
-  title: '灯塔媒体底线大观',
+  title: '灯塔底线',
   author: 'Huan',
   description: '随手搬运西方主流媒体的所谓的民主自由的报道，让帝国主义的丑恶嘴脸无处遁形~~~',
   keywords: '西方,帝国主义,丑恶嘴脸',
