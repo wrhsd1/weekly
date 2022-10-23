@@ -1,0 +1,69 @@
+--- 
+date: 2022-05-15 05:12:22
+title: 再次尝试feedbin
+toc: true 
+layout: post 
+--- 
+使用仓库https://github.com/ntkme/feedbin
+
+首先在做好域名的解析，包括
+
+*   `feedbin.domain.name`
+*   `api.feedbin.domain.name`
+*   `camo.feedbin.domain.name`
+*   `minio.feedbin.domain.name`
+
+都要做好解析，直接在dns服务商处填写即可，会自动生成https证书。
+
+    docker run -d \
+     --name feedbin \
+     --privileged \
+     --hostname feedbin.wizh.work \
+     --publish 80:80/tcp \
+     --publish 443:443/tcp \
+     --volume /sys/fs/cgroup:/sys/fs/cgroup:ro \
+     --volume /var/lib/feedbin:/data \
+     --device /dev/fuse \
+     --stop-signal SIGRTMIN+3 \
+     ghcr.io/ntkme/feedbin:edge
+
+只能在amd等86机器上运行，arm服务器无法运行。运行之后，注册账户，用邮箱。
+
+docker exec feedbin podman exec feedbin rake feedbin:make\_admin\[name@gmail.com\]
+
+docker-compose exec feedbin-web rake feedbin:make\_admin\[name@gmail.com\]
+
+注意这里是先注册，在授权管理员权限，不要缺少中括号，而且和前面admin之间没有空格。这样该帐号就成了管理员。
+
+`docker build -t user/feedbin-arm64:latest .`
+
+20220508，本地自编译和git云编译都失败，估计是作者本身的自动编译仓库也失败，等待更新。  
+ 
+
+    docker run -d \
+     --name feedbin \
+     --privileged \
+     --hostname ceshi.wizh.work \
+     --publish 80:80/tcp \
+     --volume /sys/fs/cgroup:/sys/fs/cgroup:ro \
+     --volume /var/lib/feedbin:/data \
+     --device /dev/fuse \
+     --stop-signal SIGRTMIN+3 \
+      ghcr.io/ntkme/feedbin:edge
+
+    docker run -d \
+      --name feedbin \
+      --privileged \
+      --hostname freshrss.tk \
+      --publish 80:80/tcp \
+      --publish 443:443/tcp \
+      --volume /sys/fs/cgroup:/sys/fs/cgroup:ro \
+      --volume /var/lib/feedbin:/data \
+      --device /dev/fuse \
+      --stop-signal SIGRTMIN+3 \
+      ghcr.io/ntkme/feedbin:edge
+
+$ docker run --name some-redis -d -e REDIS\_PASSWORD=foobared redis sh -c 'exec redis-server --requirepass "$REDIS\_PASSWORD"'
+
+docker build -t user/elasticsearch-2.4 .
+<!--more-->
