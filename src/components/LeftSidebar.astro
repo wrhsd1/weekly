@@ -6,8 +6,8 @@ import {parseTitle,sortPosts} from '@/util'
 
 const posts = await Astro.glob('../pages/posts/*.md');
 const allPosts = sortPosts(posts)
-
-let currentPageMatch = currentPage.slice(1);
+const oldTitle = decodeURIComponent(currentPage.split('../pages/posts/')[1]);
+let currentPageMatch = oldTitle;
 if (currentPageMatch.slice(-1) == '/') {
   currentPageMatch = currentPageMatch.substring(0, currentPageMatch.length - 1);
 }
