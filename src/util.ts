@@ -1,13 +1,12 @@
 // 转化成标题
 export const parseTitle = (currentPage: string) => {
     const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
-    let title = oldTitle;
+    let title = oldTitle.substr(5);
     if (title.slice(-1) == '/') {
         title = title.substring(0, title.length - 1);
     }
     return title
 }
-
 
 //排序所有的文章
 export const sortPosts = (allPosts: any) => {
