@@ -1,7 +1,7 @@
 // 转化成标题
 export const parseTitle = (currentPage: string) => {
     const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
-    let title1 = oldTitle.ljust(30,' ');
+    let title = oldTitle + ' ' + ' ' + 1;
     let title = title1.substr(10,28);
     if (title.slice(-1) == '/') {
         title = title.substring(0, title.length - 1);
