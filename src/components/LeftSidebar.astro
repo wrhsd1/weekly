@@ -2,12 +2,13 @@
 const { currentPage } = Astro.props;
 import AstroLogo from './Header/AstroLogo.astro';
 import {SITE} from '@/config';
-import {parseTitle,sortPosts,oldTitle} from '@/util'
+import {parseTitle,sortPosts} from '@/util'
 
 
 
 const posts = await Astro.glob('../pages/posts/*.md');
 const allPosts = sortPosts(posts)
+const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
 let currentPageMatch = currentPage.slice(1);
 if (currentPageMatch.slice(-1) == '/') {
   currentPageMatch = currentPageMatch.substring(0, currentPageMatch.length - 1);
