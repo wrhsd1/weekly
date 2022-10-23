@@ -14,12 +14,10 @@ export interface Props {
 const pageUrl = new URL(Astro.request.url);
 const currentPage = pageUrl.pathname;
 const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
-if (oldTitle.slice(-1) == '/') {
-        oldTitle = oldTitle.substring(0, oldTitle.length - 1);
+    let title = oldTitle.substr(10);
+    if (title.slice(-1) == '/') {
+        title = title.substring(0, title.length - 1);
     }
-    return oldTitle
-let title = parseTitle(currentPage);
-
 const { date, pic, desc } = Astro.props.frontmatter;
 const content = {
   title,
