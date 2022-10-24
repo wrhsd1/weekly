@@ -2,7 +2,7 @@
 export const parseTitle = (currentPage: string) => {
     const oldTitle = decodeURIComponent(currentPage.split('/posts/')[1]);
     let title1 = oldTitle + '————————————————————————————————————————————————————————————————————————————————————————————————';
-    let title = title1.substr(10,28);
+    let title = title1.substr(10);
     if (title.slice(-1) == '/') {
         title = title.substring(0, title.length - 1);
     }
