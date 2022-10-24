@@ -5,7 +5,7 @@ export const SITE = {
   keywords: '西方,帝国主义,丑恶嘴脸',
   icon: 'https://wangpan1-1252857045.file.myqcloud.com/blog/4444.png',
   pic: 'https://wangpan1-1252857045.file.myqcloud.com/blog/3333.png',
-  homePage: 'https://weekly.tw93.fun',
+  homePage: 'https://news.wrhcn.eu.org',
   blogPage: 'https://wrhcn.eu.org/',
   twitterId: 'HiTw93',
   githubId: 'tw93',
