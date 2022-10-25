@@ -5,6 +5,7 @@ import fs from 'fs';
 import { defineConfig } from 'astro/config';
 import { parse } from 'node-html-parser';
 import { SITE } from './src/config';
+import netlify from '@astrojs/netlify/functions';
 
 function defaultLayoutPlugin() {
   return function (tree, file) {
@@ -60,6 +61,8 @@ function defaultLayoutPlugin() {
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: netlify(),
   integrations: [react(), tailwind()],
   markdown: {
     remarkPlugins: [defaultLayoutPlugin],
